@@ -18,8 +18,9 @@ build:
 
 requirements:
   build:
-    # ruby for bootstrapping itself
-    - ruby
+    # ruby for bootstrapping itself; release tarballs build natively without one
+    - if: build_platform != target_platform
+      then: ruby
     - if: unix
       then: gnuconfig
     - ${{ compiler('c') }}
